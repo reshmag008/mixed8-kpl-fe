@@ -766,33 +766,33 @@ const labelTextStyle : React.CSSProperties = {
   fontWeight:'600'
 }
 
-const screenWidth = window.innerWidth;
-console.log("screenWidth=== ",screenWidth)
-if (screenWidth <= 360) {
-  console.log("<=360 px");
-  formContainerStyle.marginTop = "0px";
-  formContainerStyle.marginBottom = "50px";
-  formContainerStyle.width = "115%";
-  formContainerStyle.height = "130%";
-  inputContainerStyle.width = "87%";
+// const screenWidth = window.innerWidth;
+// console.log("screenWidth=== ",screenWidth)
+// if (screenWidth <= 360) {
+//   console.log("<=360 px");
+//   formContainerStyle.marginTop = "0px";
+//   formContainerStyle.marginBottom = "50px";
+//   formContainerStyle.width = "115%";
+//   formContainerStyle.height = "130%";
+//   inputContainerStyle.width = "87%";
 
-} else if (screenWidth <= 480) {
-  console.log("<=480 px");
-  formContainerStyle.marginTop = "0px";
-  formContainerStyle.marginBottom = "50px";
-  formContainerStyle.width = "100%";
-  formContainerStyle.height = "100%";
-  inputContainerStyle.width = "87%";
+// } else if (screenWidth <= 480) {
+//   console.log("<=480 px");
+//   formContainerStyle.marginTop = "0px";
+//   formContainerStyle.marginBottom = "50px";
+//   formContainerStyle.width = "100%";
+//   formContainerStyle.height = "100%";
+//   inputContainerStyle.width = "87%";
   
 
-} else if (screenWidth <= 600) {
-  console.log("<=600 px");
-  formContainerStyle.marginTop = "0px";
-  formContainerStyle.marginBottom = "80px";
-  formContainerStyle.width = "100%";
-  formContainerStyle.height = "100%";
-  inputContainerStyle.width = "87%";
-}
+// } else if (screenWidth <= 600) {
+//   console.log("<=600 px");
+//   formContainerStyle.marginTop = "0px";
+//   formContainerStyle.marginBottom = "80px";
+//   formContainerStyle.width = "100%";
+//   formContainerStyle.height = "100%";
+//   inputContainerStyle.width = "87%";
+// }
 
 
 

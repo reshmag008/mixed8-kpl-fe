@@ -428,27 +428,27 @@ const cardTitleStyle : React.CSSProperties = {
     
 }
 
-const isMobile = window.matchMedia("(max-width: 600px)").matches;
-    if (isMobile) {
-        playerCountStyle.fontSize = '12px'; // Adjust font size for mobile view
-        playerCountStyle.padding = '10px'
+// const isMobile = window.matchMedia("(max-width: 600px)").matches;
+//     if (isMobile) {
+//         playerCountStyle.fontSize = '12px'; // Adjust font size for mobile view
+//         playerCountStyle.padding = '10px'
 
-        playerListContainer.gridTemplateColumns =  'repeat(auto-fit, minmax(18rem, 1fr))'
-        playerListContainer.padding =  '0rem'
+//         playerListContainer.gridTemplateColumns =  'repeat(auto-fit, minmax(18rem, 1fr))'
+//         playerListContainer.padding =  '0rem'
 
-        players__card__wrap.margin = '10px'
+//         players__card__wrap.margin = '10px'
 
-        cardIconTextStyle.fontSize = "35px"
-        cardIconTextStyle.marginTop = "15px";
+//         cardIconTextStyle.fontSize = "35px"
+//         cardIconTextStyle.marginTop = "15px";
 
-        cardSubHeader.fontSize = '20px';
-        cardTitleStyle.fontSize = '26px';
+//         cardSubHeader.fontSize = '20px';
+//         cardTitleStyle.fontSize = '26px';
 
-        spanText.paddingLeft = '5px';
-        n05IconStyle.marginLeft = '80px'
-        no5Style.marginTop = '5px'
+//         spanText.paddingLeft = '5px';
+//         n05IconStyle.marginLeft = '80px'
+//         no5Style.marginTop = '5px'
 
-    }
+//     }
 
 
 export default PlayerList;
