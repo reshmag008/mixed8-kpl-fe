@@ -398,7 +398,7 @@ const PlayerRegistration: React.FC = () => {
 
         <h3 style={{color:'#FFBF00',padding:'10px'}}>Player Registration</h3>
 
-        <div style={{gridTemplateColumns :  'repeat(auto-fit, minmax(25rem, 1fr))', display:"grid"}}>
+        <div style={formStyle}>
           
             <div style={formColumnStyle}>
 
@@ -709,9 +709,17 @@ const formContainerStyle: React.CSSProperties = {
   // display:'grid',
   // margin:'100px',
   backgroundColor : "#001840",
-  marginTop : "56px",
-  height : "36.1rem"
+  // marginTop : "56px",
+  // height : "36.1rem"
+  paddingBottom : '30px'
 };
+
+
+const formStyle : React.CSSProperties = {
+  display:"grid",
+  gridTemplateColumns :  "repeat(3, 1fr)", //'repeat(auto-fit, minmax(25rem, 1fr))', 
+  gap: "16px"
+}
 
 const formColumnStyle: React.CSSProperties = {
     display:'grid',
@@ -766,33 +774,36 @@ const labelTextStyle : React.CSSProperties = {
   fontWeight:'600'
 }
 
-// const screenWidth = window.innerWidth;
-// console.log("screenWidth=== ",screenWidth)
-// if (screenWidth <= 360) {
-//   console.log("<=360 px");
-//   formContainerStyle.marginTop = "0px";
-//   formContainerStyle.marginBottom = "50px";
-//   formContainerStyle.width = "115%";
-//   formContainerStyle.height = "130%";
-//   inputContainerStyle.width = "87%";
+const screenWidth = window.innerWidth;
+console.log("screenWidth=== ",screenWidth)
+if (screenWidth <= 360) {
+  console.log("<=360 px");
+  formStyle.gridTemplateColumns = '1fr'
+  // formContainerStyle.marginTop = "0px";
+  // formContainerStyle.marginBottom = "50px";
+  // formContainerStyle.width = "115%";
+  // formContainerStyle.height = "130%";
+  // inputContainerStyle.width = "87%";
 
-// } else if (screenWidth <= 480) {
-//   console.log("<=480 px");
-//   formContainerStyle.marginTop = "0px";
-//   formContainerStyle.marginBottom = "50px";
-//   formContainerStyle.width = "100%";
-//   formContainerStyle.height = "100%";
-//   inputContainerStyle.width = "87%";
+} else if (screenWidth <= 480) {
+  console.log("<=480 px");
+  formStyle.gridTemplateColumns = '1fr'
+  // formContainerStyle.marginTop = "0px";
+  // formContainerStyle.marginBottom = "50px";
+  // formContainerStyle.width = "100%";
+  // formContainerStyle.height = "100%";
+  // inputContainerStyle.width = "87%";
   
 
-// } else if (screenWidth <= 600) {
-//   console.log("<=600 px");
-//   formContainerStyle.marginTop = "0px";
-//   formContainerStyle.marginBottom = "80px";
-//   formContainerStyle.width = "100%";
-//   formContainerStyle.height = "100%";
-//   inputContainerStyle.width = "87%";
-// }
+} else if (screenWidth <= 600) {
+  console.log("<=600 px");
+  formStyle.gridTemplateColumns = '1fr'
+  // formContainerStyle.marginTop = "0px";
+  // formContainerStyle.marginBottom = "80px";
+  // formContainerStyle.width = "100%";
+  // formContainerStyle.height = "100%";
+  // inputContainerStyle.width = "87%";
+}
 
 
 
