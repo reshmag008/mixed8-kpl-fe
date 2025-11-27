@@ -156,29 +156,29 @@ const PlayerList: React.FC = () => {
                             <span style={{ ...idText }}>#{player.id}</span>
                         </div>
 
-                        <div style={{display : "grid", marginTop : '22px', width:'214px',marginLeft : '141px'}}>
-                            <span style={{ ...fullNameLabel, marginLeft: '66px' }}>Player Role</span>
-                            <span style={{ ...labelValue, marginLeft: '62px' }}>{player.player_role}</span>
+                        <div style={{display : "grid", marginTop : '22px', width:'129px',marginLeft : '204px',transform : 'rotate(10deg)'}}>
+                            <span style={{ ...fullNameLabel}}>Player Role</span>
+                            <span style={{ ...labelValue}}>{player.player_role}</span>
                         </div>
 
-                         <div style={{display : "grid",  width:'214px',marginLeft : '143px', marginTop:'1px'}}>
-                            <span style={{ ...fullNameLabel, marginLeft: '58px' }}>Batting Style</span>
-                                <span style={{ ...labelValue, marginLeft: '55px' }}>{player.batting_style}</span>
+                         <div style={{display : "grid",  width:'129px',marginLeft : '199px', marginTop:'1px',transform : 'rotate(10deg)'}}>
+                            <span style={{ ...fullNameLabel }}>Batting Style</span>
+                                <span style={{ ...labelValue}}>{player.batting_style}</span>
                             </div>
 
-                         <div style={{display : "grid",width:'214px',marginLeft : '145px',marginTop:'1px'}}>
-                            <span style={{ ...fullNameLabel, marginLeft: '51px' }}>Bowling Style</span>
-                                <span style={{ ...labelValue, marginLeft: '48px' }}>{player.bowling_style}</span>
+                         <div style={{display : "grid",width:'129px',marginLeft : '194px',marginTop:'1px',transform : 'rotate(10deg)'}}>
+                            <span style={{ ...fullNameLabel}}>Bowling Style</span>
+                                <span style={{ ...labelValue}}>{player.bowling_style}</span>
                             </div>
 
-                        <div style={{display : "grid", width:'214px',marginLeft : '144px',marginTop:'1px'}}>
-                            <span style={{ ...fullNameLabel, marginLeft: '45px' }}>Place</span>
-                                <span style={{ ...labelValue, marginLeft: '42px' }}>{player.location}</span>
+                        <div style={{display : "grid", width:'129px',marginLeft : '188px',marginTop:'1px',transform : 'rotate(10deg)'}}>
+                            <span style={{ ...fullNameLabel}}>Place</span>
+                                <span style={{ ...labelValue }}>{player.location}</span>
                             </div>
 
-                        <div style={{display : "grid",  width:'214px',marginLeft : '146px',marginTop:'1px'}}>
-                            <span style={{ ...fullNameLabel, marginLeft: '37px' }}>Contact</span>
-                                <span style={{ ...labelValue, marginLeft: '34px' }}>{player.contact_no}</span>
+                        <div style={{display : "grid",  width:'129px',marginLeft : '183px',marginTop:'1px',transform : 'rotate(10deg)'}}>
+                            <span style={{ ...fullNameLabel}}>Contact</span>
+                                <span style={{ ...labelValue}}>{player.contact_no}</span>
                             </div>
                             
                         </div>
@@ -313,7 +313,7 @@ const fullNameLabel : React.CSSProperties = {
     fontSize: '14px',
     // paddingLeft : '52px',
     color:"maroon",
-    transform : 'rotate(10deg)',
+    // transform : 'rotate(10deg)',
     
 }
 
@@ -334,7 +334,7 @@ const labelValue :  React.CSSProperties = {
     fontSize: '14px',
     // paddingLeft : '52px',
     color:"black",
-    transform : 'rotate(10deg)',
+    // transform : 'rotate(10deg)',
     
 }
 
