@@ -90,21 +90,21 @@ const PlayerList: React.FC = () => {
             PlayerService().getAllPlayers(params).then((response:any)=>{
                 setIsLoading(false);
                 // setPlayers(response?.data?.players);
-                setPlayers((prev:any) => [...prev, ...response?.data?.players]);
+                
                 let playerList = response?.data?.players;
-                if(playerList>0){
-
-                }
+                
                 setSoldCount(response?.data?.soldPlayerCount);
                 setUnSoldCount(response?.data?.unSoldPlayerCount);
                 setPendingCount(response?.data?.pendingPlayerCount);
-                if (playerList.length === 0) {
+                if (playerList && playerList.length === 0) {
                 setHasMore(false);
                 return;
                 }
-
+                if(playerList && playerList.length > 0){
                 setItems((prev:any) => [...prev, ...playerList]);
+                setPlayers((prev:any) => [...prev, ...playerList]);
                 setPage(prev => prev + 10);
+                }
 
             })
         } catch (error) {
