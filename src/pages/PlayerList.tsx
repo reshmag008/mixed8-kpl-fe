@@ -174,17 +174,21 @@ useEffect(() => {
             <PDFCreator playerList={players}/>
             </div> */}
 
-        <InfiniteScroll
+        {/* <InfiniteScroll
       dataLength={items.length}   // ⚠️ mandatory
       next={GetAllPlayers}
       hasMore={hasMore}
       loader={<h4>Loading...</h4>}
       endMessage={<p style={{ textAlign: "center" }}>No more data</p>}
-    >
+    > */}
       <div id='content-id' ref={targetRef}  style={playerListContainer}>
             {players.map((player:any, index:number) => (
                 <>
                 <div style={players__card__wrap} key={index}>
+
+                    <div style={{display : "grid", textAlign:'center', marginTop : '329px', width:'78px',marginLeft : '180px'}}>
+                            <span style={{ ...idText }}>{player.id}</span>
+                        </div>
                     
 
                     <div style={{display:"flex"}}>
@@ -192,51 +196,48 @@ useEffect(() => {
                     {/* <img key={index} src={BACKEND_URL + '/player_images/' + player.profile_image} alt="logo" style={profileImageStyle}/> */}
                     </div>
 
-                    <div style={{display:'flex',width:'146px',marginLeft:'30px',textAlign:'center'}}>
+                    {/* <div style={{display:'flex',width:'146px',marginLeft:'30px',textAlign:'center'}}>
                         <span style={fullNameText}>{player.fullname.toUpperCase()}</span>
-                    </div>
+                    </div> */}
                     
 
                     <div style={cardHeader}>
                         
                         <div style={cardBodyTextStyle}> 
 
-                        <div style={{display : "grid", textAlign:'center', marginTop : '-234px', width:'55px',marginLeft : '156px'}}>
-                            <span style={{ ...idText }}>#{player.id}</span>
-                        </div>
+                        
 
-                        <div style={{display : "grid", marginTop : '32px', width:'129px',marginLeft : '208px',transform : 'rotate(10deg)'}}>
-                            <span style={{ ...fullNameLabel}}>Player Role</span>
+                        <div style={{display : "grid", marginTop : '-200px', width:'129px',marginLeft : '149px'}}>
                             <span style={{ ...labelValue}}>{player.player_role}</span>
                         </div>
 
-                         <div style={{display : "grid",  width:'129px',marginLeft : '203px', marginTop:'2px',transform : 'rotate(10deg)'}}>
-                            <span style={{ ...fullNameLabel }}>Batting Style</span>
+                         <div style={{display : "grid",  width:'129px',marginLeft : '149px', marginTop:'2px'}}>
                                 <span style={{ ...labelValue}}>{player.batting_style}</span>
                             </div>
 
-                         <div style={{display : "grid",width:'129px',marginLeft : '198px',marginTop:'2px',transform : 'rotate(10deg)'}}>
-                            <span style={{ ...fullNameLabel}}>Bowling Style</span>
+                         <div style={{display : "grid",width:'129px',marginLeft : '149px',marginTop:'5px'}}>
                                 <span style={{ ...labelValue}}>{player.bowling_style}</span>
                             </div>
 
-                        <div style={{display : "grid", width:'129px',marginLeft : '193px',marginTop:'2px',transform : 'rotate(10deg)'}}>
-                            <span style={{ ...fullNameLabel}}>Place</span>
+                        <div style={{display : "grid", width:'129px',marginLeft : '149px',marginTop:'2px'}}>
                                 <span style={{ ...labelValue }}>{player.location}</span>
                             </div>
 
-                        <div style={{display : "grid",  width:'129px',marginLeft : '188px',marginTop:'2px',transform : 'rotate(10deg)'}}>
-                            <span style={{ ...fullNameLabel}}>Contact</span>
+                        <div style={{display : "grid",  width:'129px',marginLeft : '149px',marginTop:'6px'}}>
                                 <span style={{ ...labelValue}}>{player.contact_no}</span>
+                            </div>
+
+                        <div style={{display : "grid",  width:'265px',marginTop:'6px', textAlign:'right'}}>
+                                <span style={{ ...labelValue}}>{player.fullname.toUpperCase()}</span>
                             </div>
                             
                         </div>
-                        {player.bid_amount && 
-                        <div style={{display : "grid",  width:'129px',marginLeft : '-231px',marginTop:'-56px',transform : 'rotate(10deg)'}}>
-                            <img key={index} src={SoldPng} style={{width:'14rem', height:'10rem'}}/>
+                        {/* {player.bid_amount && 
+                        <div style={{display : "grid",  width:'129px',marginLeft : '-88px',marginTop:'-53px'}}>
+                            <img key={index} src={SoldPng} style={{width:'7rem', height:'7rem'}}/>
                             <span style={{fontWeight: 'bold',fontSize: '20px',color: 'maroon',marginTop: '-71px',marginLeft: '78px',width: '65px',textAlign: 'center'}}>{player.bid_amount}</span>
                         </div>
-                        }
+                        } */}
 
                     </div>
                     <div style={cardFooter}>
@@ -246,7 +247,7 @@ useEffect(() => {
                 </>
             ))}
         </div>
-    </InfiniteScroll>
+    {/* </InfiniteScroll> */}
 
 
 
@@ -383,11 +384,11 @@ const fullNameLabel : React.CSSProperties = {
 
 const idText :  React.CSSProperties = {
     // marginTop: '15px', 
-    fontWeight: 'bold', 
-    fontSize: '18px',
+    fontWeight: '600', 
+    fontSize: '25px',
     // paddingLeft : '52px',
-    color:"maroon",
-    fontStyle : 'italic'
+    color:"white",
+    // fontStyle : 'italic'
     
 }
 
@@ -395,9 +396,9 @@ const idText :  React.CSSProperties = {
 const labelValue :  React.CSSProperties = {
     // marginTop: '15px', 
     fontWeight: 'bold', 
-    fontSize: '12px',
+    fontSize: '18px',
     // paddingLeft : '52px',
-    color:"black",
+    color:"white",
     // transform : 'rotate(10deg)',
     
 }
@@ -412,17 +413,17 @@ const svgStyle :React.CSSProperties = {
 }
 
 const profileImageStyle : React.CSSProperties = {
-    height: '11rem',
-    width: '8.5rem',
+    height: '14.3rem',
+    width: '10.9rem',
     // padding: '5px',
     alignItems: 'flex-start',
     // display: 'grid',
-    marginLeft: '38px',
+    marginLeft: '296px',
     objectFit:'cover',
-    // borderRadius : "10px",
-    marginTop:"190px",
+    borderRadius : "10px",
+    marginTop:"88px",
     // clipPath: "path('M0 0 H160 Q160 40 200 40 V200 H0 Z')"
-    clipPath: "path('M 0 0 H 126 Q 135 40 200 40 V 225 H 0 Z')"
+    // clipPath: "path('M 0 0 H 126 Q 135 40 200 40 V 225 H 0 Z')"
     // borderImage: "linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%)",
 //   WebkitMaskImage: "linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,2) 10%)",
 //   maskImage: "linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 20%)",
@@ -442,10 +443,12 @@ const players__card__wrap :  React.CSSProperties = {
     margin: '0 auto',
     marginTop:'25px',
     // backgroundColor:"#d4af37"
-    width: "361px",
-    height: "510px",
+    width: "502px",
+    height: "700px",
     // objectFit :"cover"
   }
+
+
 
 const no5Style : React.CSSProperties = {
     height : "3rem",
@@ -498,26 +501,26 @@ const cardTitleStyle : React.CSSProperties = {
 }
 
 const isMobile = window.matchMedia("(max-width: 600px)").matches;
-    if (isMobile) {
-        playerCountStyle.fontSize = '12px'; // Adjust font size for mobile view
-        playerCountStyle.padding = '10px'
+    // if (isMobile) {
+    //     playerCountStyle.fontSize = '12px'; // Adjust font size for mobile view
+    //     playerCountStyle.padding = '10px'
 
-        playerListContainer.gridTemplateColumns =  'repeat(auto-fit, minmax(18rem, 1fr))'
-        playerListContainer.padding =  '0rem'
+    //     playerListContainer.gridTemplateColumns =  'repeat(auto-fit, minmax(18rem, 1fr))'
+    //     playerListContainer.padding =  '0rem'
 
-        // players__card__wrap.margin = '10px'
+    //     // players__card__wrap.margin = '10px'
 
-        cardIconTextStyle.fontSize = "35px"
-        cardIconTextStyle.marginTop = "1px";
+    //     cardIconTextStyle.fontSize = "35px"
+    //     cardIconTextStyle.marginTop = "1px";
 
-        cardSubHeader.fontSize = '20px';
-        cardTitleStyle.fontSize = '26px';
+    //     cardSubHeader.fontSize = '20px';
+    //     cardTitleStyle.fontSize = '26px';
 
-        spanText.paddingLeft = '5px';
-        n05IconStyle.marginLeft = '80px'
-        no5Style.marginTop = '5px'
+    //     spanText.paddingLeft = '5px';
+    //     n05IconStyle.marginLeft = '80px'
+    //     no5Style.marginTop = '5px'
 
-    }
+    // }
 
 
 export default PlayerList;
