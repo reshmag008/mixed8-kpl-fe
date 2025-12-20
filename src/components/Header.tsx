@@ -58,11 +58,11 @@ const Header: React.FC<HeaderProps> = () => {
                 </button>
               </li>
 
-              <li style={{ ...liStyle, marginRight: '15px'}}>
+              {/* <li style={{ ...liStyle, marginRight: '15px'}}>
                 <button style={buttonStyle} onClick={()=>navigate('/team-list')}>
                     Teams
                 </button>
-              </li>
+              </li> */}
             </ul>
           </nav>
 

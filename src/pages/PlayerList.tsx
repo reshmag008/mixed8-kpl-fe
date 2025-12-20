@@ -14,8 +14,12 @@ import SoldPng from '../assets/sold.png';
 
 
 
+
 const PlayerList: React.FC = () => {
-    const ref = useRef();
+
+
+
+const ref = useRef();
     const [isLoading, setIsLoading] = useState(false)
     const [players, setPlayers] = useState<any>([]);
     const [soldCount, setSoldCount] = useState(0);
@@ -147,380 +151,307 @@ useEffect(() => {
 
     }
 
-    return (
-        <>
-        <div style={{display:'flex'}}>
+return (
+
+  
+
+    <div style={{ backgroundColor: "#0f2f45" }}>
+
+      <div style={{display:'flex'}}>
         <Header/>
         </div>
-        
-        {/* <div style={playerCountStyle}>
+
         {isLoading && <Loader type="spinner-cub" bgColor={'#194564'} color={'white'} title={"Loading Players..."} size={50} /> }
-            <span style={{marginTop:'20px', color:'white'}}>
-            Total Players : {players && players.length? players.length:0} | Unsold : {unSoldCount} | Sold : {soldCount} | Pending : {pendingCount} 
-             |<select style={inputContainerStyle}
-                    id="batting_style"
-                    name="batting_style"
-                    value={selectedTeamId}
-                    onChange={handleChange}
-                >
-                    <option value="">--Select Team--</option>
-                    {allTeams && allTeams.map((team:any, index:number) => (
-                        <option key={index} value={team.id}>{team.team_name}</option>
-                    ))}
-                </select>
-                <button style={{marginLeft:'20px'}} onClick={()=>getPreviousPlayers()}>Prev</button> 
-             <button onClick={()=>getNextPlayers()}>Next</button>
-            </span>
-            <PDFCreator playerList={players}/>
-            </div> */}
 
-        {/* <InfiniteScroll
-      dataLength={items.length}   // ⚠️ mandatory
-      next={GetAllPlayers}
-      hasMore={hasMore}
-      loader={<h4>Loading...</h4>}
-      endMessage={<p style={{ textAlign: "center" }}>No more data</p>}
-    > */}
-      <div id='content-id' ref={targetRef}  style={playerListContainer}>
+    {/* <div style={topBarStyle}>
+      {isLoading && (
+        <Loader
+          type="spinner-cub"
+          bgColor="#194564"
+          color="white"
+          title="Loading Players..."
+          size={40}
+        />
+      )}
+
+
+      <span style={statsStyle}>
+        Total Players: {players?.length || 0} |
+        Unsold: {unSoldCount} |
+        Sold: {soldCount} |
+        Pending: {pendingCount}
+      </span>
+
+      <select
+        style={selectStyle}
+        value={selectedTeamId}
+        onChange={handleChange}
+      >
+        <option value="">-- Select Team --</option>
+        {allTeams?.map((team: any) => (
+          <option key={team.id} value={team.id}>
+            {team.team_name}
+          </option>
+        ))}
+      </select>
+
+      <PDFCreator playerList={players} />
+    </div> */}
             {players.map((player:any, index:number) => (
-                <>
-                <div style={players__card__wrap} key={index}>
+            <div style={containerStyle}>
+            <img
+                src={playerBg}
+                alt="Kannur Premier League 2026 Poster"
+                style={imageStyle}
+            />
 
-                    <div style={{display : "grid", textAlign:'center', marginTop : '329px', width:'78px',marginLeft : '180px'}}>
-                            <span style={{ ...idText }}>{player.id}</span>
-                        </div>
-                    
+            <div style={idOverlayStyle}>
+                {player.id}
+            </div>
 
-                    <div style={{display:"flex"}}>
-                    <img key={index} src={`https://storage.googleapis.com/auction-players/${player.profile_image}`} alt="logo" style={profileImageStyle}/>
-                    {/* <img key={index} src={BACKEND_URL + '/player_images/' + player.profile_image} alt="logo" style={profileImageStyle}/> */}
-                    </div>
+            <div style={roleOverlayStyle}>
+                {player.player_role}
+            </div>
 
-                    {/* <div style={{display:'flex',width:'146px',marginLeft:'30px',textAlign:'center'}}>
-                        <span style={fullNameText}>{player.fullname.toUpperCase()}</span>
-                    </div> */}
-                    
+            <div style={battingOverlayStyle}>
+                {player.batting_style}
+            </div>
 
-                    <div style={cardHeader}>
-                        
-                        <div style={cardBodyTextStyle}> 
+            <div style={bowlingOverlayStyle}>
+                {player.bowling_style}
+            </div>
 
-                        
+            <div style={locationOverlayStyle}>
+                {player.location}
+            </div>
 
-                        <div style={{display : "grid", marginTop : '-200px', width:'129px',marginLeft : '149px'}}>
-                            <span style={{ ...labelValue}}>{player.player_role}</span>
-                        </div>
+            <div style={contactOverlayStyle}>
+                {player.contact_no}
+            </div>
 
-                         <div style={{display : "grid",  width:'129px',marginLeft : '149px', marginTop:'2px'}}>
-                                <span style={{ ...labelValue}}>{player.batting_style}</span>
-                            </div>
+            <div style={nameOverlayStyle}>
+                {player.fullname.toUpperCase()}
+            </div>
 
-                         <div style={{display : "grid",width:'129px',marginLeft : '149px',marginTop:'5px'}}>
-                                <span style={{ ...labelValue}}>{player.bowling_style}</span>
-                            </div>
+            <img
+            src={`https://storage.googleapis.com/auction-players/${player.profile_image}`}
+            alt="Team Logo"
+            style={overlayImageStyle}
+        />
 
-                        <div style={{display : "grid", width:'129px',marginLeft : '149px',marginTop:'2px'}}>
-                                <span style={{ ...labelValue }}>{player.location}</span>
-                            </div>
 
-                        <div style={{display : "grid",  width:'129px',marginLeft : '149px',marginTop:'6px'}}>
-                                <span style={{ ...labelValue}}>{player.contact_no}</span>
-                            </div>
-
-                        <div style={{display : "grid",  width:'265px',marginTop:'6px', textAlign:'right'}}>
-                                <span style={{ ...labelValue}}>{player.fullname.toUpperCase()}</span>
-                            </div>
-                            
-                        </div>
-                        {/* {player.bid_amount && 
-                        <div style={{display : "grid",  width:'129px',marginLeft : '-88px',marginTop:'-53px'}}>
-                            <img key={index} src={SoldPng} style={{width:'7rem', height:'7rem'}}/>
-                            <span style={{fontWeight: 'bold',fontSize: '20px',color: 'maroon',marginTop: '-71px',marginLeft: '78px',width: '65px',textAlign: 'center'}}>{player.bid_amount}</span>
-                        </div>
-                        } */}
-
-                    </div>
-                    <div style={cardFooter}>
-
-                    </div>
-                </div>
-                </>
+            </div>
             ))}
-        </div>
-    {/* </InfiniteScroll> */}
+
+    </div>
+  );
+};
+
+const topBarStyle: React.CSSProperties = {
+  width: "100%",
+  padding: "12px 16px",
+  backgroundColor: "#0f2f45",
+  color: "white",
+  display: "flex",
+  flexWrap: "wrap",
+  alignItems: "center",
+  gap: "12px",
+  position: "sticky",
+  top: 0,
+  zIndex: 1000,
+};
+
+const statsStyle: React.CSSProperties = {
+  fontSize: "14px",
+  fontWeight: 500,
+};
+
+const selectStyle: React.CSSProperties = {
+  padding: "6px 10px",
+  borderRadius: "6px",
+  border: "none",
+  outline: "none",
+};
+
+const buttonStyle: React.CSSProperties = {
+  padding: "6px 12px",
+  borderRadius: "6px",
+  border: "none",
+  cursor: "pointer",
+};
+
+
+const containerStyle: React.CSSProperties = {
+  position: "relative",      // REQUIRED for overlay
+  width: "100%",
+  maxWidth: "420px",
+  margin: "20px auto",
+};
+
+const imageStyle: React.CSSProperties = {
+  width: "100%",
+  height: "auto",
+  display: "block",
+  borderRadius: "12px",
+};
+
+
+const idOverlayStyle: React.CSSProperties = {
+  position: "absolute",                 // REQUIRED
+  bottom: "47%",                        // relative to image height
+  left: "44%",
+  transform: "translateX(-50%)",
+  color: "white",
+  fontWeight: 700,
+  fontSize: "clamp(14px, 7vw, 30px)",   // responsive font
+  textAlign: "center",
+  padding: "6px 14px",
+  borderRadius: "20px",
+  maxWidth: "90%",
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  zIndex: 2,
+  width : '67px'
+};
+
+const nameOverlayStyle: React.CSSProperties = {
+  position: "absolute",                 // REQUIRED
+  bottom: "9%",                        // relative to image height
+  left: "19%",
+  transform: "translateX(-50%)",
+  color: "white",
+  fontWeight: 700,
+  fontSize: "clamp(11px, 1vw, 30px)",   // responsive font
+  textAlign: "right",
+  padding: "6px 14px",
+  borderRadius: "20px",
+  maxWidth: "90%",
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  zIndex: 2,
+  width : '251px'
+};
+
+const roleOverlayStyle: React.CSSProperties = {
+  position: "absolute",                 // REQUIRED
+  bottom: "28%",                        // relative to image height
+  left: "39%",
+  transform: "translateX(-50%)",
+  color: "white",
+  fontWeight: 700,
+  fontSize: "clamp(11px, 0vw, 30px)",   // responsive font
+  textAlign: "center",
+  padding: "6px 14px",
+  borderRadius: "20px",
+  maxWidth: "90%",
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  zIndex: 2,
+  width : '67px'
+};
+
+
+const battingOverlayStyle: React.CSSProperties = {
+  position: "absolute",                 // REQUIRED
+  bottom: "24%",                        // relative to image height
+  left: "38%",
+  transform: "translateX(-50%)",
+  color: "white",
+  fontWeight: 700,
+  fontSize: "clamp(11px, 0vw, 30px)",   // responsive font
+  textAlign: "center",
+  padding: "6px 14px",
+  borderRadius: "20px",
+  maxWidth: "90%",
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  zIndex: 2,
+  width : '67px'
+};
+
+
+const bowlingOverlayStyle: React.CSSProperties = {
+  position: "absolute",                 // REQUIRED
+  bottom: "21%",                        // relative to image height
+  left: "39%",
+  transform: "translateX(-50%)",
+  color: "white",
+  fontWeight: 700,
+  fontSize: "clamp(11px, 0vw, 30px)",   // responsive font
+  textAlign: "center",
+  padding: "6px 14px",
+  borderRadius: "20px",
+  maxWidth: "90%",
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  zIndex: 2,
+  width : '67px'
+};
+
+const locationOverlayStyle: React.CSSProperties = {
+  position: "absolute",                 // REQUIRED
+  bottom: "18%",                        // relative to image height
+  left: "37%",
+  transform: "translateX(-50%)",
+  color: "white",
+  fontWeight: 700,
+  fontSize: "clamp(11px, 0vw, 30px)",   // responsive font
+  textAlign: "center",
+  padding: "6px 14px",
+  borderRadius: "20px",
+  maxWidth: "90%",
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  zIndex: 2,
+  width : '67px'
+};
 
 
 
-        {isLoading && <Loader type="spinner-cub" bgColor={'#FFBF00'} color={'#FFBF00'} title={"Loading Players..."} size={50} /> }
-
-        {/* {(players )&&
-        
-        } */}
-
-
-
-        {/* <Footer/> */}
-        </>
-    )
-}
-
-const playerListContainer: React.CSSProperties = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(25rem, 1fr))',
-    gap: '2rem',
-    // maxWidth: '120rem',
-    margin: '0 auto',
-    padding: '2rem',
-    backgroundColor:'#001840',
-    // width: "100%",
-    //  height: "600px", 
-    // overflow: "hidden",
-    // display: "flex",
-    //     alignItems: "center",
-    //     justifyContent: "center"
-}
-
-const cardIconTextStyle: React.CSSProperties = {
-    padding: '10px',
-    cursor: 'pointer',
-    color: 'yellow',
-    textAlign: 'left',
-    fontSize: '50px',
-    textShadow: "1px 1px 0 #f00, 2px 2px 0 #f00, 3px 3px 0 #f00",
-    fontWeight:"bolder",
-    fontStyle:'italic'
-  };
-
-const cardSubHeader : React.CSSProperties = {
-    fontSize: '25px',
-    fontFamily: 'auto',
-    marginTop: '11px',
-    // textAlign: 'center',
-    border: "2px solid #ccc",
-    borderRadius: "8px",
-    // width: "130px",
-    backgroundColor: "antiquewhite",
-    color : "black",
-    padding:"3px",
-    marginLeft:"125px",
-    height:"fit-content"
-}
+const contactOverlayStyle: React.CSSProperties = {
+  position: "absolute",                 // REQUIRED
+  bottom: "14%",                        // relative to image height
+  left: "40%",
+  transform: "translateX(-50%)",
+  color: "white",
+  fontWeight: 700,
+  fontSize: "clamp(11px, 0vw, 30px)",   // responsive font
+  textAlign: "center",
+  padding: "6px 14px",
+  borderRadius: "20px",
+  maxWidth: "90%",
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  zIndex: 2,
+  width : '67px'
+};
 
 
-const cardHeaderTextStyle: React.CSSProperties = {
-    gap: '2rem',
-    cursor: 'pointer',
-    // color: 'yellow',
-    textAlign: 'center',
-    fontSize: '23px',
-    // textShadow: '1px 1px 0 #999, 2px 2px 0 #999, 3px 3px 0 #999',
-    fontFamily: "Arial,Helvetica, sans-serif",
-    justifyContent:'center'
-    
-  };
+const overlayImageStyle: React.CSSProperties = {
+  position: "absolute",
 
-  const cardBodyTextStyle: React.CSSProperties = {
-    color: 'black',
-    textAlign: 'left',
-    fontSize: '25px',
-    paddingLeft:"10px"
-  };
+  /* responsive positioning */
+  top: "64%",               // relative to poster height
+  left: "76%",
+  transform: "translateX(-50%)",
 
-const n05IconStyle : React.CSSProperties = {
-    display:'flex', justifyContent:'end', marginLeft:"95px"
-}
+  /* responsive sizing */
+  width: "clamp(126px, 22vw, 142px)",
+  aspectRatio: "127 / 173", // keeps image ratio
+  height: "auto",
 
-const imageStyle1 : React.CSSProperties = {
-    height : '7rem',
-    width: '7rem',
-    padding:'5px',
-    // borderRadius: '13px',
-    // objectFit: 'cover',
-    // border: 'none'
-    // marginLeft:"-15px",
-    // marginTop:"-122px"
-}
-
-const spanText :  React.CSSProperties = {
-    marginTop: '-170px', 
-    // fontWeight: 'bold', 
-    fontSize: '20px',
-    paddingLeft : '183px',
-    color:'white'
-    // paddingTop : '8px'
-}
-
-const spanText1 :  React.CSSProperties = {
-    marginTop: '127px', 
-    // fontWeight: 'bold', 
-    fontSize: '16px',
-    paddingLeft : '52px',
-    color : 'goldenrod',
-    // paddingTop : '8px'
-    transform : 'rotate(12deg)'
-}
-
-const fullNameText :  React.CSSProperties = {
-    marginTop: '6px', 
-    fontWeight: '600', 
-    fontSize: '16px',
-    // paddingLeft : '114px',
-    color:"maroon",
-    // marginLeft : '-78px',
-    width : '146px',
-    fontStyle:'italic',
-    height:'42px'
-}
-
-const fullNameLabel : React.CSSProperties = {
-    // marginTop: '15px', 
-    fontWeight: 'bold', 
-    fontSize: '12px',
-    // paddingLeft : '52px',
-    color:"maroon",
-    // transform : 'rotate(10deg)',
-    
-}
-
-const idText :  React.CSSProperties = {
-    // marginTop: '15px', 
-    fontWeight: '600', 
-    fontSize: '25px',
-    // paddingLeft : '52px',
-    color:"white",
-    // fontStyle : 'italic'
-    
-}
-
-
-const labelValue :  React.CSSProperties = {
-    // marginTop: '15px', 
-    fontWeight: 'bold', 
-    fontSize: '18px',
-    // paddingLeft : '52px',
-    color:"white",
-    // transform : 'rotate(10deg)',
-    
-}
-
-const svgStyle :React.CSSProperties = {
-    height : '1rem',
-    width: '1rem',
-    objectFit:'cover',
-    padding:'10px',
-    filter: 'invert(85%) sepia(20%) saturate(150%) hue-rotate(200deg) brightness(120%) contrast(120%)'
-
-}
-
-const profileImageStyle : React.CSSProperties = {
-    height: '14.3rem',
-    width: '10.9rem',
-    // padding: '5px',
-    alignItems: 'flex-start',
-    // display: 'grid',
-    marginLeft: '296px',
-    objectFit:'cover',
-    borderRadius : "10px",
-    marginTop:"88px",
-    // clipPath: "path('M0 0 H160 Q160 40 200 40 V200 H0 Z')"
-    // clipPath: "path('M 0 0 H 126 Q 135 40 200 40 V 225 H 0 Z')"
-    // borderImage: "linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%)",
-//   WebkitMaskImage: "linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,2) 10%)",
-//   maskImage: "linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 20%)",
-//   maskImage: "linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%), linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 20%)",
-//   maskComposite: "intersect",
-  
-}
-
-const players__card__wrap :  React.CSSProperties = {
-    gap: '2rem',
-    // backgroundImage: 'linear-gradient(to top,  #DE3163	, #000080	)',
-    // backgroundImage :"linear-gradient(#194564,#4c8dba, #194564)",
-    backgroundImage : `url(${playerBg})`,
-    border: '1px solid #ccc', 
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', 
-    borderRadius: '8px', 
-    margin: '0 auto',
-    marginTop:'25px',
-    // backgroundColor:"#d4af37"
-    width: "502px",
-    height: "700px",
-    // objectFit :"cover"
-  }
-
-
-
-const no5Style : React.CSSProperties = {
-    height : "3rem",
-    width : "4rem",
-    // borderRadius : "50%",
-    padding:"5px",
-    marginLeft:"15px",
-    marginTop:"-35px"
-
-}
-
-const cardHeader :  React.CSSProperties = {
-    display: 'flex',
-    justifyContent:'flex-start'
-}
-
-const cardFooter :  React.CSSProperties = {
-    display: 'flex',
-    backgroundColor : 'purple',
-    marginBottom:'10px'
-}
-
-const playerCountStyle : React.CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    backgroundColor:'#d4af37',
-    marginTop:'40px'
-}
-
-const inputContainerStyle: React.CSSProperties = {
-    flexBasis: "48%",
-    height: "2rem",
-    border: "2px solid #ccc",
-    borderRadius: "8px",
-    margin:'5px',
-    // width : '80%'
-  };
-
-const cardTitleStyle : React.CSSProperties = {
-    fontSize: '30px',
-    fontFamily: 'auto',
-    marginTop:'8px',
-    textAlign: 'center',
-    background: "linear-gradient(to top, #f32170, #ff6b08,#cf23cf, #eedd44)",
-    WebkitTextFillColor: "transparent",
-    WebkitBackgroundClip: "text",
-    marginLeft:"10px"
-    
-}
-
-const isMobile = window.matchMedia("(max-width: 600px)").matches;
-    // if (isMobile) {
-    //     playerCountStyle.fontSize = '12px'; // Adjust font size for mobile view
-    //     playerCountStyle.padding = '10px'
-
-    //     playerListContainer.gridTemplateColumns =  'repeat(auto-fit, minmax(18rem, 1fr))'
-    //     playerListContainer.padding =  '0rem'
-
-    //     // players__card__wrap.margin = '10px'
-
-    //     cardIconTextStyle.fontSize = "35px"
-    //     cardIconTextStyle.marginTop = "1px";
-
-    //     cardSubHeader.fontSize = '20px';
-    //     cardTitleStyle.fontSize = '26px';
-
-    //     spanText.paddingLeft = '5px';
-    //     n05IconStyle.marginLeft = '80px'
-    //     no5Style.marginTop = '5px'
-
-    // }
+  objectFit: "cover",
+  backgroundColor: "white",
+  borderRadius: "12px",
+  zIndex: 2,
+};
 
 
 export default PlayerList;
